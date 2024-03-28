@@ -584,9 +584,60 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"bNKaB":[function(require,module,exports) {
-console.log("Hello world!");
-console.log("Happy developing!");
-console.log("TEST");
+let pswWorkouts = [];
+let workoutsList = document.getElementById("workouts-list");
+let workoutsLoading = document.getElementById("workouts-loading");
+const btnRefresh = document.getElementById("refresh-btn");
+const apiUrl = "https://proswimworkouts.com/wp-json/wp/v2/workouts?per_page=10&orderby=modified";
+window.setTimeout(function() {
+    if (!localStorage.getItem("pswWorkouts")) {
+        workoutsList.innerHTML = `<li class="italic font-medium text-orange-700">Loading workouts ...</li>`;
+        console.log("Workouts not currently in local storage.");
+        getWorkoutsFromPSW();
+    } else {
+        console.log("Workouts already in local storage.");
+        workoutsLoading.classList.remove("hidden");
+        setTimeout(()=>{
+            render(JSON.parse(localStorage.getItem("pswWorkouts")));
+            workoutsLoading.classList.add("hidden");
+        }, 500);
+    }
+}, 500);
+btnRefresh.addEventListener("click", function() {
+    localStorage.clear();
+    workoutsList.innerHTML = `<li class="italic font-medium text-orange-700">Updating workouts ...</li>`;
+    getWorkoutsFromPSW();
+});
+function getWorkoutsFromPSW() {
+    fetch(apiUrl).then((response)=>{
+        if (!response.ok) throw new Error("Network response was not ok");
+        return response.json();
+    }).then((data)=>{
+        pswWorkouts = data;
+        localStorage.setItem("pswWorkouts", JSON.stringify(pswWorkouts));
+        render(pswWorkouts);
+    }).catch((error)=>{
+        console.error("Error:", error);
+    });
+}
+function render(workouts) {
+    let workoutsListItems = "";
+    for(let i = 0; i < workouts.length; i++){
+        let date = new Date(workouts[i].date);
+        workoutsListItems += `<li class="pt-1 mb-2">
+        <a class="hover:text-orange-700 hover:font-bold" href='${workouts[i].link}' target='_blank'>
+          ${workouts[i].title.rendered}
+        </a>
+        <br/><span class="italic text-xs text-sky-700">Published on ${date.toLocaleDateString("en-US", {
+            weekday: "long",
+            month: "long",
+            day: "numeric",
+            year: "numeric"
+        })} </span>
+      </li>`;
+    }
+    workoutsList.innerHTML = workoutsListItems;
+}
 
 },{}]},["gbXMy","bNKaB"], "bNKaB", "parcelRequire1d3e")
 

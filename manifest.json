@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "ProSwimWorkouts - The Trusted Source For Swim Coaching Professionals",
+  "description": "This Chrome Extension will load the most recent workout updates from the ProSwimWorkouts platform right from within your favorite browser.",
+  "version": "0.1",
+  "icons": {
+    "16": "./src/icons/psw-16.png",
+    "32": "./src/icons/psw-32.png",
+    "48": "./src/icons/psw-48.png",
+    "128": "./src/icons/psw-128.png"
+  },
+  "action": {
+    "default_title": "ProSwimWorkotus",
+    "default_popup": "./src/index.html"
+  },
+  "host_permissions": [
+    "https://proswimworkouts.com/"
+  ]
+}

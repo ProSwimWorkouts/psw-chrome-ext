@@ -7,3 +7,4 @@ It's a first version and not published yet. Planning to release v1 in the coming
 ## Technologies & Tools
 - TailwindCSS
 - Parcel
+- dotenvx

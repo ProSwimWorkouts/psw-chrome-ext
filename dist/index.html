@@ -3,12 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProSwimWorkouts - The Trusted Source For Swim Coaching Professionals</title>
   <link href="/index.61d3354a.css" type="text/css" rel="stylesheet">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
   <script src="/index.0641b553.js" defer=""></script>
 </head>
-<body>
-  <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
+<body class="border-t-8 border-t-orange-500 bg-slate-100">
+  <div class="mx-auto min-w-96">
+    <header id="header" class="bg-white p-7">
+      <div>
+        <h1 class="text-3xl mb-1 text-orange-500 font-bold">ProSwimWorkouts</h1>
+        <h2 class="italic font-semibold mb-3 text-orange-700">The Trusted Source For Swim Coaching Professionals</h2>
+      </div>
+      <div class="flex mb-3">
+        <h3>Latest Workout Updates</h3>
+        <button id="refresh-btn" class="px-2">
+          <img src="/refresh.d30ccc1b.svg" alt="Refresh Workouts" class="filter: drop-shadow shadow-orange-500">
+        </button>
+      </div>
+    </header>
+    <main class="border-t-4 border-t-slate-300">
+      <div class="p-4 border-2 rounded-md bg-white m-5 shadow-xl shadow-slate-300">
+        <p id="workouts-loading" class="hidden italic font-medium text-orange-700">Loading workouts ...</p>
+        <ul role="list" id="workouts-list" class="divide-y divide-gray-100"></ul>
+      </div>
+    </main>
+    <footer class="pb-3">
+      <p class="text-center">&copy; 2011-2024 ProSwimWorkouts</p>
+    </footer>
+  </div>
 </body>
 </html>

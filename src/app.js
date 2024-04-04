@@ -1,6 +1,8 @@
 let pswWorkouts = []
 let workoutsList = document.getElementById('workouts-list');
 let workoutsLoading = document.getElementById('workouts-loading');
+let pUpdate = document.getElementById('updateP-el');
+let dateRefresh = "";
 const btnRefresh = document.getElementById('refresh-btn');
 const apiUrl = process.env.WP_URL;
 
@@ -11,6 +13,8 @@ window.setTimeout(function() {
     getWorkoutsFromPSW();
   } else {
     console.log("Workouts already in local storage.");
+    dateRefresh = localStorage.getItem('lastUpdate');
+    pUpdate.innerText = `Last updated on ${dateRefresh}`;
     workoutsLoading.classList.remove('hidden');
     setTimeout(() => {
       render(JSON.parse(localStorage.getItem('pswWorkouts')))
@@ -20,7 +24,10 @@ window.setTimeout(function() {
 );
 
 btnRefresh.addEventListener('click', function() {
+  dateRefresh = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+  pUpdate.innerText = `Last updated on ${dateRefresh}`;
   localStorage.clear();
+  localStorage.setItem("lastUpdate", dateRefresh);
   workoutsList.innerHTML = `<li class="italic font-medium text-orange-700">Updating workouts ...</li>`;
   getWorkoutsFromPSW();
 });

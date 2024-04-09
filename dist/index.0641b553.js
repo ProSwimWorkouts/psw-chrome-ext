@@ -599,7 +599,7 @@ window.setTimeout(function() {
     } else {
         console.log("Workouts already in local storage.");
         dateRefresh = localStorage.getItem("lastUpdate");
-        pUpdate.innerText = `Last updated on ${dateRefresh}`;
+        pUpdate.innerHTML = `<span class="font-medium">Last updated on ${dateRefresh}</span>`;
         workoutsLoading.classList.remove("hidden");
         setTimeout(()=>{
             render(JSON.parse(localStorage.getItem("pswWorkouts")));
@@ -614,7 +614,7 @@ btnRefresh.addEventListener("click", function() {
         month: "long",
         day: "numeric"
     });
-    pUpdate.innerText = `Last updated on ${dateRefresh}`;
+    pUpdate.innerHTML = `<span class="font-medium">Last updated on ${dateRefresh}</span>`;
     localStorage.clear();
     localStorage.setItem("lastUpdate", dateRefresh);
     workoutsList.innerHTML = `<li class="italic font-medium text-orange-700">Updating workouts ...</li>`;

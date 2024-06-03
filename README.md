@@ -6,7 +6,7 @@ This Chrome Extension will load the most recent workout updates from the ProSwim
 At this time the extension needs to be run as "upacked" - download the "dist" folder for this and place it on your hard drive. In Chrome (or Arc) open your Extensions tab and click on "Load unpacked" to select the "dist" folder. This will add the extension to your browser and you can pin it to have continued and easy access.
 
 ## Preview
-[Screenshot of the browser extions.](https://github.com/ProSwimWorkouts/psw-chrome-ext/blob/main/src/img/pswExtensionScreenshot.png)
+![Screenshot of the browser extions.](https://github.com/ProSwimWorkouts/psw-chrome-ext/blob/main/src/img/pswExtensionScreenshot.png)
 
 ## Technologies & Tools
 - TailwindCSS
